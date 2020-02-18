@@ -5,7 +5,6 @@ using DotnetIteration.Models;
 
 namespace DotnetIteration
 {
-
   public static class Iteration
   {
     /*
@@ -27,7 +26,8 @@ namespace DotnetIteration
    */
     public static IEnumerable<string> Yelling(List<string> words)
     {
-      throw new System.NotImplementedException();
+      var yellingOutput = words.Select(word => word.ToUpper());
+      return yellingOutput;
     }
 
     /* 
@@ -38,7 +38,8 @@ namespace DotnetIteration
 
     public static IEnumerable<int> Double(List<int> numbers)
     {
-      throw new System.NotImplementedException();
+      var doubleOutput = numbers.Select(number => number * 2);
+      return doubleOutput;
     }
     /*
       * 3) Define a function stringyIndexes() that takes an list of
@@ -47,7 +48,14 @@ namespace DotnetIteration
       */
     public static IEnumerable<string> StringyIndexes(List<string> data)
     {
-      throw new System.NotImplementedException();
+      var stringOutput = new List<string>();
+
+      for (var i = 0; i < data.Count; i++)
+      {
+        stringOutput.Add($"{data[i]} is at index {i}");
+      }
+
+      return stringOutput;
     }
     /*
        * 4) Define a function onlyTheEvenSurvive that accepts an list of
@@ -56,7 +64,8 @@ namespace DotnetIteration
 
     public static IEnumerable<int> OnlyTheEvenSurvive(List<int> data)
     {
-      throw new System.NotImplementedException();
+      var evenNumbers = data.Where(number => number % 2 == 0);
+      return evenNumbers;
     }
     /*
         * 5) Define a function onlyTheEvenIndexedSurvive that accepts an list of
@@ -64,7 +73,17 @@ namespace DotnetIteration
         */
     public static IEnumerable<int> OnlyTheEvenIndexedSurvive(List<int> data)
     {
-      throw new System.NotImplementedException();
+      var evenIndexedNumbers = new List<int>();
+
+      for (var i = 0; i < data.Count; i++)
+      {
+        if (i % 2 == 0)
+        {
+          evenIndexedNumbers.Add(data[i]);
+        }
+      }
+
+      return evenIndexedNumbers;
     }
     /*
       * 6)  Define a function bestMoviesOfTheYear that accepts an list of
@@ -81,7 +100,17 @@ namespace DotnetIteration
       */
     public static IEnumerable<string> BestMovieOfTheYear(List<Movie> data, int year)
     {
-      throw new System.NotImplementedException();
+      var movieList = new List<string>();
+
+      foreach (var movie in data)
+      {
+        if (movie.Year == year && movie.Score > 90)
+        {
+          movieList.Add(movie.Name);
+        }
+      }
+
+      return movieList;
     }
 
     /*
@@ -92,7 +121,17 @@ namespace DotnetIteration
 
     public static bool EveryoneIsOdd(List<int> data)
     {
-      throw new System.NotImplementedException();
+      var isOdd = true;
+
+      foreach (var number in data)
+      {
+        if (number % 2 == 0)
+        {
+          isOdd = false;
+        }
+      }
+
+      return isOdd;
     }
     /*
       * 8) Define a function findTheNeedle that accepts an list of
@@ -101,9 +140,19 @@ namespace DotnetIteration
       */
     public static string FindTheNeedle(List<string> data)
     {
-      throw new System.NotImplementedException();
-    }
+      var needleString = "";
 
+      foreach (var sentence in data)
+      {
+        if (sentence.IndexOf("needle") > 0)
+        {
+          needleString = sentence;
+          break;
+        }
+      }
+
+      return needleString;
+    }
 
     /*
         * 9) Define a function findTheNeedleIndex that accepts an list of
@@ -113,7 +162,17 @@ namespace DotnetIteration
 
     public static int FindTheNeedleIndex(List<string> data)
     {
-      throw new System.NotImplementedException();
+      var needleString = 0;
+
+      for (var i = 0; i < data.Count; i++)
+      {
+        if (data[i].IndexOf("needle") > 0)
+        {
+          needleString = i;
+        }
+      }
+
+      return needleString;
     }
 
     /*
@@ -125,7 +184,18 @@ namespace DotnetIteration
 
     public static bool SomeoneToLove(List<string> data)
     {
-      throw new System.NotImplementedException();
+      var foundFourLetterWord = false;
+
+      foreach (var word in data)
+      {
+        if (word.Length == 4)
+        {
+          foundFourLetterWord = true;
+          break;
+        }
+      }
+
+      return foundFourLetterWord;
     }
   }
 
