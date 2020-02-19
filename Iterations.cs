@@ -48,13 +48,7 @@ namespace DotnetIteration
       */
     public static IEnumerable<string> StringyIndexes(List<string> data)
     {
-      var stringOutput = new List<string>();
-
-      for (var i = 0; i < data.Count; i++)
-      {
-        stringOutput.Add($"{data[i]} is at index {i}");
-      }
-
+      var stringOutput = data.Select((inputString, i) => $"{inputString} is at index {i}");
       return stringOutput;
     }
     /*
@@ -73,16 +67,7 @@ namespace DotnetIteration
         */
     public static IEnumerable<int> OnlyTheEvenIndexedSurvive(List<int> data)
     {
-      var evenIndexedNumbers = new List<int>();
-
-      for (var i = 0; i < data.Count; i++)
-      {
-        if (i % 2 == 0)
-        {
-          evenIndexedNumbers.Add(data[i]);
-        }
-      }
-
+      var evenIndexedNumbers = data.Where((inputNumber, i) => i % 2 == 0).Select(inputNumber => inputNumber);
       return evenIndexedNumbers;
     }
     /*
@@ -100,16 +85,7 @@ namespace DotnetIteration
       */
     public static IEnumerable<string> BestMovieOfTheYear(List<Movie> data, int year)
     {
-      var movieList = new List<string>();
-
-      foreach (var movie in data)
-      {
-        if (movie.Year == year && movie.Score > 90)
-        {
-          movieList.Add(movie.Name);
-        }
-      }
-
+      var movieList = data.Where(movie => movie.Year == year && movie.Score > 90).Select(movie => movie.Name);
       return movieList;
     }
 
@@ -121,17 +97,8 @@ namespace DotnetIteration
 
     public static bool EveryoneIsOdd(List<int> data)
     {
-      var isOdd = true;
-
-      foreach (var number in data)
-      {
-        if (number % 2 == 0)
-        {
-          isOdd = false;
-        }
-      }
-
-      return isOdd;
+      var hasEvens = data.Any(number => number % 2 == 0);
+      return !hasEvens;
     }
     /*
       * 8) Define a function findTheNeedle that accepts an list of
@@ -140,17 +107,7 @@ namespace DotnetIteration
       */
     public static string FindTheNeedle(List<string> data)
     {
-      var needleString = "";
-
-      foreach (var sentence in data)
-      {
-        if (sentence.IndexOf("needle") > 0)
-        {
-          needleString = sentence;
-          break;
-        }
-      }
-
+      var needleString = data.First(sentence => sentence.IndexOf("needle") > 0);
       return needleString;
     }
 
@@ -184,17 +141,7 @@ namespace DotnetIteration
 
     public static bool SomeoneToLove(List<string> data)
     {
-      var foundFourLetterWord = false;
-
-      foreach (var word in data)
-      {
-        if (word.Length == 4)
-        {
-          foundFourLetterWord = true;
-          break;
-        }
-      }
-
+      var foundFourLetterWord = data.Any(word => word.Length == 4);
       return foundFourLetterWord;
     }
   }
